@@ -1,0 +1,52 @@
+require "json"
+require "rake-pipeline"
+require "rake-pipeline-web-filters"
+require "rake-pipeline-web-filters/helpers"
+
+class HandlebarsFilter < Rake::Pipeline::Filter
+  def initialize(&block)
+    block ||= proc { |input| input.sub(/\.handlebars$/, '.js') }
+    super(&block)
+  end
+
+  def generate_output(inputs, output)
+    inputs.each do |input|
+      name = File.basename(input.path, '.handlebars')
+      output.write "Ember.TEMPLATES['#{name}'] = Ember.Handlebars.compile(#{input.read.to_json});"
+    end
+  end
+end
+
+output "public/application"
+input "ember-skeleton"
+
+match "templates/*.handlebars" do
+  filter HandlebarsFilter
+  concat "application.templates.js"
+end
+
+match 'controllers/*.js' do
+  concat 'application.controllers.js'
+end
+
+match 'models/*.js' do
+  concat 'application.models.js'
+end
+
+match 'index.js' do
+  concat 'application.app.js'
+end
+
+match "*.js" do
+    concat ["application.templates.js", "application.app.js", "application.models.js", "application.controllers.js"], "application.js"
+end
+
+# Stylesheets
+match 'stylesheets/*.css' do
+  concat 'application.css'
+end
+
+match 'stylesheets/*.scss' do
+  sass
+  concat 'application.css'
+end

@@ -1,0 +1,1 @@
+Todos = Ember.Application.create();
