@@ -19,6 +19,7 @@ http://127.0.0.1/index.html
 
 ### Building your Ember.js application
 Your Ember.js application should be built inside the ember-skeleton folder.  Use the following file/folder explanations as a guide:
+
 	ember-skeleton
 	 |-	controllers -- Ember.js controllers
 	 |-	models		-- Ember.js models
@@ -32,6 +33,7 @@ On each page refresh, the rake-pipeline Rack middleware will compile the applica
 In order to load the main controller of your application you must append that controller's view to the page.
 
 You can do this using the `appendTo` method built into Ember.js, like so:
+
 	var MainView = Ember.View.create({
 	  templateName: 'main_view'
 	}).appendTo('#ember-skeleton');
