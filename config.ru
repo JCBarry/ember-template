@@ -1,14 +1,13 @@
-require 'sinatra'
+require 'rack'
+require 'rack/contrib/try_static'
+require 'rack/contrib/not_found'
 require 'rake-pipeline'
 require 'rake-pipeline/middleware'
 
-class Server < Sinatra::Base
-  get '/' do
-    'ohai'
-  end
+use Rake::Pipeline::Middleware, 'Assetfile'
+use Rack::TryStatic,
+    :root => "public",
+    :urls => %w[/],
+    :try => ['.html', 'index.html', '/index.html']
 
-end
-
-use Rack::Static, :urls => ["/ember-skeleton", "/libs"], :root => "public"
-use Rake::Pipeline::Middleware, File.join('Assetfile')
-run Server
+run Rack::NotFound.new './public/404.html'

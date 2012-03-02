@@ -18,35 +18,37 @@ class HandlebarsFilter < Rake::Pipeline::Filter
 end
 
 output "public/application"
-input "ember-skeleton"
+input "ember-skeleton" do
 
-match "templates/*.handlebars" do
-  filter HandlebarsFilter
-  concat "application.templates.js"
-end
+  match "templates/*.handlebars" do
+    filter HandlebarsFilter
+    concat "application.templates.js"
+  end
 
-match 'controllers/*.js' do
-  concat 'application.controllers.js'
-end
+  match 'controllers/*.js' do
+    concat 'application.controllers.js'
+  end
 
-match 'models/*.js' do
-  concat 'application.models.js'
-end
+  match 'models/*.js' do
+    concat 'application.models.js'
+  end
 
-match 'index.js' do
-  concat 'application.app.js'
-end
+  match 'index.js' do
+    concat 'application.app.js'
+  end
 
-match "*.js" do
-    concat ["application.templates.js", "application.app.js", "application.models.js", "application.controllers.js"], "application.js"
-end
+  match "*.js" do
+      concat ["application.templates.js", "application.app.js", "application.models.js", "application.controllers.js"], "application.js"
+  end
 
-# Stylesheets
-match 'stylesheets/*.css' do
-  concat 'application.css'
-end
+  # Stylesheets
+  match 'stylesheets/*.css' do
+    concat 'application.css'
+  end
 
-match 'stylesheets/*.scss' do
-  sass
-  concat 'application.css'
+  match 'stylesheets/*.scss' do
+    sass
+    concat 'application.css'
+  end
+
 end
