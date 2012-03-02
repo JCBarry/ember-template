@@ -1,7 +1,7 @@
 # Ember.js Template
 
 ### Overview
-Ember-template aims to help developers create [Ember.js](http://emberjs.com) applications with a modular approach.  At the same time, compiling the application down to simply to static assets, an application.js file and an application.css file.
+Ember-template aims to help developers create [Ember.js](http://emberjs.com) applications with a modular approach.  At the same time, compiling the application down to simply static assets, an application.js file and an application.css file.
 
 This repo contains all the code necessary to develop your application and perform the compilation procedure.
 
