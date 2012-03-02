@@ -15,7 +15,7 @@ Clone the repository and enter the ember-template directory.  **You'll need Ruby
 
 You will now have a server running at `http://127.0.0.1:9292`.  To access your Ember.js application go to:
 
-http://127.0.0.1/index.html
+http://127.0.0.1:9292/index.html
 
 ### Building your Ember.js application
 Your Ember.js application should be built inside the ember-skeleton folder.  Use the following file/folder explanations as a guide:
