@@ -42,3 +42,7 @@ You can do this using the `appendTo` method built into Ember.js, like so:
 ### Todo
 * Add Coffeescript support to the Assetfile
 * Hopefully track the rake-pipeline gem against rubygems instead of the git repo
+
+### Copyright
+
+Copyright (c) 2012 Jason Barry, Steve Agalloco. See [LICENSE](https://github.com/jcbarry/ember-template/blob/master/LICENSE.md) for details
